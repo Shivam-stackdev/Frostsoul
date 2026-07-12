@@ -37,11 +37,11 @@ val hasReleaseSigningConfig =
         releaseKeyPassword != null
 
 android {
-    namespace = "moe.rukamori.archivetune"
+    namespace = "dev.vxs.frostsoul"
     compileSdk = 37
 
     defaultConfig {
-    applicationId = "moe.rukamori.archivetune"
+    applicationId = "dev.vxs.frostsoul"
         minSdk = 26
         targetSdk = 37
         versionCode = 138
@@ -355,7 +355,7 @@ androidComponents {
                 metadataFile.set(rootProject.layout.projectDirectory.file("IconPack/metadata.json"))
                 svgDirectory.set(rootProject.layout.projectDirectory.dir("IconPack/svg"))
                 applicationId.set(variant.applicationId)
-                targetActivityClassName.set("moe.rukamori.archivetune.MainActivity")
+                targetActivityClassName.set("dev.vxs.frostsoul.MainActivity")
                 resourceOutputDirectory.set(
                     layout.buildDirectory.dir("generated/iconPack/${variant.name}/res"),
                 )
