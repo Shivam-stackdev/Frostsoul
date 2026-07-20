@@ -34,7 +34,6 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Universal Release APK
-        run: ./gradlew assembleGmsMobileUniversalRelease
         env:
           LASTFM_API_KEY: ${{ secrets.LASTFM_API_KEY }}
           LASTFM_SECRET: ${{ secrets.LASTFM_SECRET }}
@@ -42,8 +41,14 @@ jobs:
           TOGETHER_BEARER_TOKEN: ${{ secrets.TOGETHER_BEARER_TOKEN }}
           CANVAS_BEARER_TOKEN: ${{ secrets.CANVAS_BEARER_TOKEN }}
           EXTRACTOR_BEARER: ${{ secrets.EXTRACTOR_BEARER }}
+        run: |
+          ./gradlew assembleGmsMobileUniversalRelease \
+            --stacktrace \
+            --scan \
+            --no-daemon
 
       - name: Sign APK
+        if: success()
         uses: ilharp/sign-android-release@v1
         with:
           releaseDir: app/build/outputs/apk/gmsMobileUniversal/release
@@ -53,6 +58,7 @@ jobs:
           keyPassword: ${{ secrets.KEY_PASSWORD }}
 
       - name: Upload APK
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: FrostSoul-Universal-Release
