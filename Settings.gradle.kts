@@ -2,17 +2,7 @@
 
 pluginManagement {
     repositories {
-        google {
-            content {
-                includeGroupAndSubgroups("com.android")
-                includeGroupAndSubgroups("com.google")
-                includeGroupAndSubgroups("androidx")
-            }
-        }
-        mavenCentral()
-        gradlePluginPortal()
-    }
-}
+        google()
 
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -44,7 +34,7 @@ dependencyResolutionManagement {
 //     id("org.gradle.toolchains.foojay-resolver-convention") version("1.0.0")
 // }
 
-rootProject.name = "ArchiveTune"
+rootProject.name = "Frostsoul"
 include(":app")
 include(":core")
 include(":lyrics:kugou")
