@@ -220,6 +220,11 @@
                 <action android:name="android.media.browse.MediaBrowserService" />
             </intent-filter>
         </service>
+        
+        <service
+    android:name=".overlay.FloatingLyricsService"
+    android:exported="false"
+    android:foregroundServiceType="mediaPlayback" />
 
         <service
             android:name=".playback.ExoDownloadService"
