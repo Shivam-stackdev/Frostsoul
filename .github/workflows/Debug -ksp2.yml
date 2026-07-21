@@ -33,6 +33,15 @@ jobs:
           build-scan-publish: true
           build-scan-terms-of-use-url: https://gradle.com/terms-of-service
           build-scan-terms-of-use-agree: "yes"
+         
+      - name: Inspect resolved core artifact
+        run: |
+          ./gradlew :core:jar --no-daemon
+          find . -name "core*.jar" -path "*/build/libs/*"
+          jar tf $(find . -name "core*.jar" -path "*/build/libs/*" | head -1) | grep -i "innertube/pages\|innertube/models" | head -30
+
+      - name: Build (or your existing ksp/assemble step)
+        run: ./gradlew assembleGmsMobileUniversalRelease --stacktrace
 
       - name: Run KSP Debug
         run: |
